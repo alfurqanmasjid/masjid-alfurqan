@@ -1,50 +1,26 @@
-# Masjid Al-Furqan V3 — Committee Edition
+# Masjid Al-Furqan V4
 
-## Main pages
-- `index.html` — public website
-- `admin.html` — easy admin prototype
-- `tv.html` — fullscreen mosque TV display
+Current scope:
+- Professional folder structure
+- White/emerald homepage
+- First Kalma under the mosque name
+- Pakistan flag beside Malir Cantt, Karachi
+- Mobile navigation
+- Live clock
+- Gregorian + Hijri dates
+- Compact prayer table
+- AlAdhan API for Fajr, Dhuhr, Asr, Maghrib, Isha
+- Admin-controlled Jamaat times
+- Ishraq and Chasht placeholders are admin-controlled only
+- Next Jamaat countdown
+- Separate placeholder pages for the other Phase 1 sections
 
-## Included
-- White / emerald / gold professional theme
-- Real Masjid Al-Furqan photo + logo
-- Exact Malir Cantt coordinates: 24.929231, 67.2063425
-- Live Karachi clock
-- Gregorian + Hijri date
-- Automatic Adhan times through AlAdhan
-- Separate Jamaat times
-- Countdown to next Jamaat
-- In-page 10-minute / 5-minute prayer alerts
-- Optional browser notification permission
-- Full Urdu / English switching
-- Sunday Bayan after Dhuhr
-- Announcements
-- Ramadan timetable
-- Eid prayer
-- Janazah notices
-- Nikah information
-- Common Duas
-- Gallery
-- Exact Google Maps pin + directions
-- Donations + QR placeholder
-- Imam / Muazzin / committee
-- Contact section
-- TV mode
-- No YouTube section
-
-## Upload to GitHub
-Replace the current repository files with all files/folders from this package. Keep the folder structure exactly.
-
-## Firebase
-The website can be shown to the committee immediately without Firebase.
-The admin currently saves demo edits in the same browser using Local Storage.
-
-For real online admin saving, create Firebase and send only the PUBLIC Web App configuration:
-- apiKey
-- authDomain
-- projectId
-- storageBucket
-- messagingSenderId
-- appId
-
-Never share Gmail password or Firebase private service account keys.
+## Update using GitHub Desktop
+1. Extract this ZIP.
+2. In GitHub Desktop click **Show in Explorer** for your cloned repository.
+3. Copy everything from this V4 folder into that repository folder and choose **Replace the files in the destination**.
+4. Return to GitHub Desktop.
+5. Summary: `V4 homepage and prayer timetable`
+6. Click **Commit to main**.
+7. Click **Push origin**.
+8. Wait about a minute and hard-refresh the website.

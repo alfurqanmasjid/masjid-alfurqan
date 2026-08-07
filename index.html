@@ -1,152 +1,108 @@
 <!doctype html>
 <html lang="ur" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f8f6ef">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
 <title>Masjid Al-Furqan — Malir Cantt</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/prayer.css">
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="wrap nav">
-    <div class="brand">
-      <img src="assets/logo.png" alt="Al Furqan logo">
-      <div><strong id="brandName">مسجد الفرقان</strong><span id="brandLoc">ملیر کینٹ، کراچی</span></div>
-    </div>
-    <div class="nav-actions">
-      <button id="notifyBtn" class="btn btn-light">🔔 <span data-i18n="alerts">Prayer Alerts</span></button>
-      <button id="langBtn" class="btn btn-dark">EN</button>
-      <a class="btn btn-light" href="admin.html" data-i18n="admin">Admin</a>
+<header class="site-header">
+  <div class="top-strip">
+    <div class="container header-top">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo.png" alt="Masjid Al-Furqan logo">
+        <div class="brand-copy">
+          <strong id="brandName">مسجد الفرقان</strong>
+          <span class="kalma">لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَّسُولُ اللّٰهِ ﷺ</span>
+          <span class="location-line"><img src="assets/images/pakistan-flag.svg" alt="Pakistan flag"><span id="brandLocation">ملیر کینٹ، کراچی</span></span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <button id="langToggle" class="btn btn-outline">EN</button>
+        <a class="btn btn-outline admin-shortcut" href="admin/index.html">Admin</a>
+      </div>
     </div>
   </div>
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="index.html">Home</a>
+        <a href="pages/announcements.html">Announcements</a>
+        <a href="pages/bayan.html">Sunday Bayan</a>
+        <a href="pages/ramadan.html">Ramadan</a>
+        <a href="pages/guidance.html">Islamic Guidance</a>
+        <a href="pages/gallery.html">Gallery</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
+<main>
 <section class="hero">
-  <div class="hero-overlay"></div>
-  <img class="hero-photo" src="assets/mosque.jpg" alt="Masjid Al-Furqan">
-  <div class="wrap hero-content">
-    <div class="hero-card">
-      <span class="kicker" data-i18n="welcome">Welcome to</span>
-      <h1 id="heroName">مسجد الفرقان</h1>
-      <p id="heroLocation">ملیر کینٹ، کراچی</p>
-      <div class="clock" id="clock">--:--:--</div>
-      <div class="dates"><span id="gregDate">—</span><span id="hijriDate">—</span></div>
+  <img class="hero-image" src="assets/images/mosque.jpg" alt="Masjid Al-Furqan">
+  <div class="hero-shade"></div>
+  <div class="container hero-content">
+    <div class="hero-panel">
+      <span class="eyebrow" data-i18n="todayAtMasjid">Today at Masjid Al-Furqan</span>
+      <div class="clock" id="liveClock">--:--:--</div>
+      <div class="date-row"><span id="gregorianDate">—</span><span id="hijriDate">—</span></div>
     </div>
   </div>
 </section>
 
-<main class="wrap main">
-  <section class="next-prayer">
+<section class="container prayer-section" id="prayerSection">
+  <div class="section-head compact">
+    <div><span class="eyebrow" data-i18n="mainPurpose">Main purpose</span><h1 data-i18n="todayPrayerTimes">Today's Prayer Timings</h1></div>
+    <span class="api-badge">AlAdhan API + Admin Jamaat</span>
+  </div>
+
+  <div class="next-prayer-bar">
     <div>
-      <span class="kicker" data-i18n="nextJamaat">Next Jamaat</span>
-      <h2 id="nextName">—</h2>
-      <p id="nextAt">—</p>
+      <span class="mini-label" data-i18n="nextJamaat">Next Jamaat</span>
+      <strong id="nextPrayerName">—</strong>
+      <span id="nextPrayerTime">—</span>
     </div>
-    <div class="countdown" id="countdown">--:--:--</div>
-  </section>
-
-  <div id="alertBanner" class="alert-banner hidden"></div>
-
-  <section class="section">
-    <div class="section-title">
-      <div><span class="kicker" data-i18n="today">Today</span><h2 data-i18n="prayerTimes">Prayer Times</h2></div>
-      <span class="pill">Malir Cantt</span>
+    <div class="countdown-wrap">
+      <span class="mini-label" data-i18n="remaining">Remaining</span>
+      <div class="countdown" id="nextCountdown">--:--:--</div>
     </div>
-    <div class="prayer-grid" id="prayerGrid"></div>
-    <div class="jummah">
-      <div><strong data-i18n="jummah">Jummah</strong><span data-i18n="jummahSub">Khutbah / Prayer</span></div>
-      <strong id="jummahTime">1:45 PM</strong>
-    </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="section-title">
-      <div><span class="kicker" data-i18n="updates">Latest</span><h2 data-i18n="announcements">Announcements</h2></div>
-    </div>
-    <div class="cards" id="announcements"></div>
-  </section>
+  <div class="prayer-table-wrap">
+    <table class="prayer-table">
+      <thead><tr><th data-i18n="prayer">Prayer</th><th data-i18n="adhan">Adhan</th><th data-i18n="jamaat">Jamaat</th></tr></thead>
+      <tbody id="prayerRows"></tbody>
+    </table>
+  </div>
+  <div class="prayer-footnote" data-i18n="sourceNote">Adhan timings are fetched automatically for the mosque location. Jamaat timings are controlled by the mosque administration.</div>
+</section>
 
-  <section class="section">
-    <div class="section-title">
-      <div><span class="kicker" data-i18n="programs">Programs</span><h2 data-i18n="bayanEvents">Bayan & Events</h2></div>
-    </div>
-    <div class="cards" id="events"></div>
-  </section>
-
-  <section class="section two-col">
-    <article class="feature-card">
-      <span class="kicker" data-i18n="ramadan">Ramadan</span>
-      <h3 data-i18n="ramadanTimetable">Ramadan Timetable</h3>
-      <div id="ramadanBox"></div>
-    </article>
-    <article class="feature-card">
-      <span class="kicker" data-i18n="eid">Eid</span>
-      <h3 data-i18n="eidPrayer">Eid Prayer</h3>
-      <div id="eidBox"></div>
-    </article>
-  </section>
-
-  <section class="section two-col">
-    <article class="feature-card">
-      <span class="kicker" data-i18n="janazah">Janazah</span>
-      <h3 data-i18n="janazahNotice">Janazah Notice</h3>
-      <div id="janazahBox"></div>
-    </article>
-    <article class="feature-card">
-      <span class="kicker" data-i18n="nikah">Nikah</span>
-      <h3 data-i18n="nikahInfo">Nikah Information</h3>
-      <div id="nikahBox"></div>
-    </article>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <div><span class="kicker" data-i18n="duas">Duas</span><h2 data-i18n="commonDuas">Common Duas</h2></div>
-    </div>
-    <div class="dua-grid" id="duasGrid"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <div><span class="kicker" data-i18n="gallery">Gallery</span><h2 data-i18n="masjidGallery">Masjid Gallery</h2></div>
-    </div>
-    <div class="gallery" id="gallery"></div>
-  </section>
-
-  <section class="section two-col">
-    <article class="feature-card">
-      <span class="kicker" data-i18n="donate">Donate</span>
-      <h3 data-i18n="donationDetails">Donation Details</h3>
-      <div id="donationBox"></div>
-    </article>
-    <article class="feature-card">
-      <span class="kicker" data-i18n="location">Location</span>
-      <h3 data-i18n="findUs">Find Us</h3>
-      <iframe id="mapFrame" class="map" loading="lazy"></iframe>
-      <a id="directionsBtn" class="btn btn-dark full" target="_blank" data-i18n="directions">Get Directions</a>
-    </article>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <div><span class="kicker" data-i18n="people">People</span><h2 data-i18n="imamCommittee">Imam & Committee</h2></div>
-    </div>
-    <div class="cards" id="committee"></div>
-  </section>
-
-  <section class="section contact">
-    <div>
-      <span class="kicker" data-i18n="contact">Contact</span>
-      <h2 data-i18n="contactMasjid">Contact Masjid Al-Furqan</h2>
-    </div>
-    <div id="contactLinks" class="contact-links"></div>
-  </section>
+<section class="container home-preview-grid">
+  <article class="preview-card">
+    <span class="eyebrow">Latest</span><h2 data-i18n="latestAnnouncement">Latest Announcement</h2>
+    <p>Website content will be connected to the admin panel after design approval.</p>
+    <a href="pages/announcements.html">Read more →</a>
+  </article>
+  <article class="preview-card">
+    <span class="eyebrow">Sunday</span><h2 data-i18n="sundayBayan">Sunday Bayan</h2>
+    <p data-i18n="sundayBayanText">Every Sunday after Dhuhr prayer.</p>
+    <a href="pages/bayan.html">Read more →</a>
+  </article>
+</section>
 </main>
 
-<footer><div class="wrap footer-inner"><span>Masjid Al-Furqan • Malir Cantt, Karachi</span><a href="tv.html">TV Mode</a></div></footer>
+<footer class="site-footer"><div class="container footer-inner"><span>Masjid Al-Furqan • Malir Cantt, Karachi</span><span>24.929231, 67.2063425</span></div></footer>
 
-<script src="config.js"></script>
-<script src="app.js"></script>
-</body>
-</html>
+<script src="js/app.js"></script>
+<script src="js/language.js"></script>
+<script src="js/api.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/prayer.js"></script>
+<script src="js/ui.js"></script>
+</body></html>
