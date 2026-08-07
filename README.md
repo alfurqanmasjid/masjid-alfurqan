@@ -1,26 +1,49 @@
-# Masjid Al-Furqan V4
+# Masjid Al-Furqan Live Prayer Timetable
 
-Current scope:
-- Professional folder structure
-- White/emerald homepage
-- First Kalma under the mosque name
-- Pakistan flag beside Malir Cantt, Karachi
-- Mobile navigation
-- Live clock
-- Gregorian + Hijri dates
-- Compact prayer table
-- AlAdhan API for Fajr, Dhuhr, Asr, Maghrib, Isha
-- Admin-controlled Jamaat times
-- Ishraq and Chasht placeholders are admin-controlled only
-- Next Jamaat countdown
-- Separate placeholder pages for the other Phase 1 sections
+A free, single-page prayer timetable for Malir Cantt, Karachi.
 
-## Update using GitHub Desktop
-1. Extract this ZIP.
-2. In GitHub Desktop click **Show in Explorer** for your cloned repository.
-3. Copy everything from this V4 folder into that repository folder and choose **Replace the files in the destination**.
-4. Return to GitHub Desktop.
-5. Summary: `V4 homepage and prayer timetable`
-6. Click **Commit to main**.
-7. Click **Push origin**.
-8. Wait about a minute and hard-refresh the website.
+## What it does
+- Shows the current Karachi time.
+- Downloads today's Adhan times automatically.
+- Uses the Hanafi Asr setting and the University of Islamic Sciences, Karachi calculation method.
+- Shows the mosque's Jamaat times.
+- Counts down live to the next Jamaat.
+- Works on mobile and can be linked from a WhatsApp group description.
+
+## Important: verify the settings
+Open `index.html` in a text editor and find `const SETTINGS`.
+
+The coordinates currently used are an approximate point in Malir Cantt:
+- Latitude: 24.9436
+- Longitude: 67.2057
+
+Replace these with the exact mosque coordinates from Google Maps.
+
+The initial Jamaat times were taken from the supplied WhatsApp screenshot:
+- Fajr 05:30
+- Dhuhr 13:30
+- Asr 17:45
+- Maghrib uses the calculated Maghrib time
+- Isha 21:00
+- Jummah 13:45
+
+Change any time in `jamaatTimes` using 24-hour format. Example:
+`Fajr: "05:15"`
+
+## Free GitHub Pages publishing
+1. Create a free GitHub account.
+2. Create a new public repository, for example `masjid-furqan`.
+3. Upload `index.html`.
+4. Open repository Settings → Pages.
+5. Under “Build and deployment,” select “Deploy from a branch.”
+6. Select the `main` branch and `/ (root)`, then save.
+7. GitHub will provide a free address similar to:
+   `https://USERNAME.github.io/masjid-furqan/`
+
+No purchased domain is required.
+
+## Local preview
+Double-click `index.html`. The prayer API may work locally in most modern browsers. The final hosted version is recommended.
+
+## Note
+Calculated Adhan times and a mosque's announced Jamaat times are different. The mosque administration should verify all displayed times before sharing the link.

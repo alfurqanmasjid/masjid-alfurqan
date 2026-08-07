@@ -1,108 +1,227 @@
 <!doctype html>
 <html lang="ur" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>Masjid Al-Furqan — Malir Cantt</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/prayer.css">
-<link rel="stylesheet" href="css/responsive.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#071713" />
+  <title>مسجد الفرقان — نماز کے اوقات</title>
+  <style>
+    :root{
+      --bg:#06130f; --card:#0c211a; --card2:#102a22; --text:#f7f4e8;
+      --muted:#adc2b7; --gold:#d7b86a; --line:#24443a; --accent:#56c596;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; color:var(--text);
+      background:radial-gradient(circle at top,#12372c 0,#06130f 48%,#020906 100%);
+      font-family:"Noto Nastaliq Urdu","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+    }
+    .wrap{width:min(760px,100%);margin:auto;padding:22px 14px 42px}
+    header{text-align:center;padding:24px 10px 18px}
+    .moon{font-size:38px}
+    h1{margin:6px 0 0;font-size:clamp(30px,8vw,48px);font-weight:700}
+    .place{color:var(--muted);font-size:17px;margin-top:4px}
+    .clock{font-family:system-ui,sans-serif;font-size:clamp(36px,11vw,68px);font-weight:750;letter-spacing:1px;margin-top:14px;direction:ltr}
+    .date{color:var(--muted);font-size:15px;margin-top:2px}
+    .next{
+      background:linear-gradient(145deg,var(--card2),var(--card));
+      border:1px solid var(--line);border-radius:22px;padding:20px;margin:10px 0 16px;
+      text-align:center;box-shadow:0 18px 50px #0007
+    }
+    .next-label{color:var(--gold);font-size:18px}
+    .next-name{font-size:31px;font-weight:700;margin:3px 0}
+    .countdown{font-family:system-ui,sans-serif;font-size:clamp(32px,10vw,56px);font-weight:800;direction:ltr;color:var(--accent)}
+    .grid{display:grid;gap:10px}
+    .row{
+      display:grid;grid-template-columns:1.25fr 1fr 1fr;align-items:center;
+      background:#0a1c16d9;border:1px solid var(--line);border-radius:16px;padding:13px 15px
+    }
+    .row.active{border-color:var(--gold);background:#173125;box-shadow:0 0 0 1px #d7b86a44 inset}
+    .name{font-size:20px;font-weight:700}
+    .label{color:var(--muted);font-size:12px;display:block}
+    .time{font-family:system-ui,sans-serif;font-size:19px;font-weight:700;direction:ltr;text-align:center}
+    .section-title{margin:22px 3px 9px;color:var(--gold);font-size:18px}
+    .jummah,.notice{
+      border:1px solid var(--line);background:var(--card);border-radius:16px;padding:15px;margin-top:10px
+    }
+    .jummah{display:flex;justify-content:space-between;align-items:center;font-size:19px}
+    .small{font-size:13px;color:var(--muted);line-height:1.8}
+    .status{text-align:center;color:var(--muted);font-size:12px;margin:16px 0 4px}
+    .footer{text-align:center;color:#79988b;font-size:12px;margin-top:20px}
+    .error{color:#ffd2c7}
+    @media(max-width:430px){
+      .row{grid-template-columns:1.1fr 1fr 1fr;padding:12px 9px}
+      .name{font-size:18px}.time{font-size:16px}
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="top-strip">
-    <div class="container header-top">
-      <a class="brand" href="index.html">
-        <img src="assets/images/logo.png" alt="Masjid Al-Furqan logo">
-        <div class="brand-copy">
-          <strong id="brandName">مسجد الفرقان</strong>
-          <span class="kalma">لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَّسُولُ اللّٰهِ ﷺ</span>
-          <span class="location-line"><img src="assets/images/pakistan-flag.svg" alt="Pakistan flag"><span id="brandLocation">ملیر کینٹ، کراچی</span></span>
-        </div>
-      </a>
-      <div class="header-actions">
-        <button id="langToggle" class="btn btn-outline">EN</button>
-        <a class="btn btn-outline admin-shortcut" href="admin/index.html">Admin</a>
-      </div>
-    </div>
-  </div>
-  <nav class="main-nav">
-    <div class="container nav-inner">
-      <button class="menu-toggle" id="menuToggle">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a class="active" href="index.html">Home</a>
-        <a href="pages/announcements.html">Announcements</a>
-        <a href="pages/bayan.html">Sunday Bayan</a>
-        <a href="pages/ramadan.html">Ramadan</a>
-        <a href="pages/guidance.html">Islamic Guidance</a>
-        <a href="pages/gallery.html">Gallery</a>
-        <a href="pages/contact.html">Contact</a>
-      </div>
-    </div>
-  </nav>
-</header>
+<main class="wrap">
+  <header>
+    <div class="moon">☾</div>
+    <h1 id="mosqueName">مسجد الفرقان</h1>
+    <div class="place" id="locationText">ملیر کینٹ، کراچی</div>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="date" id="dateLine">—</div>
+  </header>
 
-<main>
-<section class="hero">
-  <img class="hero-image" src="assets/images/mosque.jpg" alt="Masjid Al-Furqan">
-  <div class="hero-shade"></div>
-  <div class="container hero-content">
-    <div class="hero-panel">
-      <span class="eyebrow" data-i18n="todayAtMasjid">Today at Masjid Al-Furqan</span>
-      <div class="clock" id="liveClock">--:--:--</div>
-      <div class="date-row"><span id="gregorianDate">—</span><span id="hijriDate">—</span></div>
-    </div>
-  </div>
-</section>
+  <section class="next">
+    <div class="next-label">اگلی جماعت</div>
+    <div class="next-name" id="nextName">—</div>
+    <div class="countdown" id="countdown">--:--:--</div>
+    <div class="small" id="nextAt">—</div>
+  </section>
 
-<section class="container prayer-section" id="prayerSection">
-  <div class="section-head compact">
-    <div><span class="eyebrow" data-i18n="mainPurpose">Main purpose</span><h1 data-i18n="todayPrayerTimes">Today's Prayer Timings</h1></div>
-    <span class="api-badge">AlAdhan API + Admin Jamaat</span>
-  </div>
+  <div class="section-title">آج کے نماز اور جماعت کے اوقات</div>
+  <section class="grid" id="prayerGrid"></section>
 
-  <div class="next-prayer-bar">
-    <div>
-      <span class="mini-label" data-i18n="nextJamaat">Next Jamaat</span>
-      <strong id="nextPrayerName">—</strong>
-      <span id="nextPrayerTime">—</span>
-    </div>
-    <div class="countdown-wrap">
-      <span class="mini-label" data-i18n="remaining">Remaining</span>
-      <div class="countdown" id="nextCountdown">--:--:--</div>
-    </div>
-  </div>
+  <section class="jummah">
+    <strong>جمعہ</strong>
+    <span class="time" id="jummahTime">1:45 PM</span>
+  </section>
 
-  <div class="prayer-table-wrap">
-    <table class="prayer-table">
-      <thead><tr><th data-i18n="prayer">Prayer</th><th data-i18n="adhan">Adhan</th><th data-i18n="jamaat">Jamaat</th></tr></thead>
-      <tbody id="prayerRows"></tbody>
-    </table>
-  </div>
-  <div class="prayer-footnote" data-i18n="sourceNote">Adhan timings are fetched automatically for the mosque location. Jamaat timings are controlled by the mosque administration.</div>
-</section>
+  <section class="notice">
+    <strong>درسِ قرآن</strong>
+    <div class="small">روزانہ عشاء کے بعد — ترجمہ و تفسیر کے ساتھ</div>
+  </section>
 
-<section class="container home-preview-grid">
-  <article class="preview-card">
-    <span class="eyebrow">Latest</span><h2 data-i18n="latestAnnouncement">Latest Announcement</h2>
-    <p>Website content will be connected to the admin panel after design approval.</p>
-    <a href="pages/announcements.html">Read more →</a>
-  </article>
-  <article class="preview-card">
-    <span class="eyebrow">Sunday</span><h2 data-i18n="sundayBayan">Sunday Bayan</h2>
-    <p data-i18n="sundayBayanText">Every Sunday after Dhuhr prayer.</p>
-    <a href="pages/bayan.html">Read more →</a>
-  </article>
-</section>
+  <div class="status" id="status">اوقات لوڈ ہو رہے ہیں…</div>
+  <div class="footer">براہِ کرم جماعت کے اوقات مسجد انتظامیہ سے تصدیق کرلیں۔</div>
 </main>
 
-<footer class="site-footer"><div class="container footer-inner"><span>Masjid Al-Furqan • Malir Cantt, Karachi</span><span>24.929231, 67.2063425</span></div></footer>
+<script>
+/*
+  مسجد انتظامیہ کے لیے آسان سیٹنگز:
+  jamaatTimes میں صرف جماعت کا وقت تبدیل کریں۔
+  null رکھنے پر اذان کا وقت استعمال ہوگا۔
+*/
+const SETTINGS = {
+  mosqueName: "مسجد الفرقان",
+  locationText: "ملیر کینٹ، کراچی",
+  latitude: 24.9436,
+  longitude: 67.2057,
+  calculationMethod: 1, // University of Islamic Sciences, Karachi
+  school: 1,            // Hanafi Asr
+  jummah: "13:45",
+  jamaatTimes: {
+    Fajr: "05:30",
+    Dhuhr: "13:30",
+    Asr: "17:45",
+    Maghrib: null,
+    Isha: "21:00"
+  },
+  prayerNames: {
+    Fajr:"فجر", Dhuhr:"ظہر", Asr:"عصر", Maghrib:"مغرب", Isha:"عشاء"
+  }
+};
 
-<script src="js/app.js"></script>
-<script src="js/language.js"></script>
-<script src="js/api.js"></script>
-<script src="js/countdown.js"></script>
-<script src="js/prayer.js"></script>
-<script src="js/ui.js"></script>
-</body></html>
+const order = ["Fajr","Dhuhr","Asr","Maghrib","Isha"];
+let todayData = null;
+
+function cleanTime(v){ return String(v || "").split(" ")[0].slice(0,5); }
+function toMinutes(hm){
+  const [h,m] = hm.split(":").map(Number);
+  return h*60+m;
+}
+function displayTime(hm){
+  let [h,m]=hm.split(":").map(Number);
+  const ap=h>=12?"PM":"AM"; h=h%12||12;
+  return `${h}:${String(m).padStart(2,"0")} ${ap}`;
+}
+function localDateKey(d=new Date()){
+  return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Karachi",year:"numeric",month:"2-digit",day:"2-digit"}).format(d);
+}
+function karachiNow(){
+  const parts = new Intl.DateTimeFormat("en-US",{
+    timeZone:"Asia/Karachi",year:"numeric",month:"2-digit",day:"2-digit",
+    hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false
+  }).formatToParts(new Date());
+  const o={}; parts.forEach(p=>o[p.type]=p.value);
+  return {y:+o.year,mo:+o.month,d:+o.day,h:+o.hour,mi:+o.minute,s:+o.second};
+}
+function secondsUntil(hm, addDay=false){
+  const n=karachiNow(), [h,m]=hm.split(":").map(Number);
+  const nowSecs=n.h*3600+n.mi*60+n.s;
+  let target=h*3600+m*60;
+  if(addDay) target += 86400;
+  return target-nowSecs;
+}
+function formatDuration(sec){
+  sec=Math.max(0,Math.floor(sec));
+  const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;
+  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+function effectiveTimes(){
+  if(!todayData) return null;
+  const out={};
+  order.forEach(k=>out[k]=SETTINGS.jamaatTimes[k] || cleanTime(todayData[k]));
+  return out;
+}
+function render(){
+  document.getElementById("mosqueName").textContent=SETTINGS.mosqueName;
+  document.getElementById("locationText").textContent=SETTINGS.locationText;
+  document.getElementById("jummahTime").textContent=displayTime(SETTINGS.jummah);
+  if(!todayData) return;
+
+  const eff=effectiveTimes();
+  const now=karachiNow(), currentMin=now.h*60+now.mi;
+  let nextKey=order.find(k=>toMinutes(eff[k])>currentMin);
+  let tomorrow=false;
+  if(!nextKey){nextKey="Fajr";tomorrow=true;}
+
+  const grid=document.getElementById("prayerGrid");
+  grid.innerHTML="";
+  order.forEach(k=>{
+    const row=document.createElement("div");
+    row.className="row"+(k===nextKey&&!tomorrow?" active":"");
+    row.innerHTML=`
+      <div class="name">${SETTINGS.prayerNames[k]}</div>
+      <div><span class="label">اذان</span><div class="time">${displayTime(cleanTime(todayData[k]))}</div></div>
+      <div><span class="label">جماعت</span><div class="time">${displayTime(eff[k])}</div></div>`;
+    grid.appendChild(row);
+  });
+
+  document.getElementById("nextName").textContent=SETTINGS.prayerNames[nextKey]+(tomorrow?" (کل)":"");
+  document.getElementById("nextAt").textContent="جماعت: "+displayTime(eff[nextKey]);
+  document.getElementById("countdown").textContent=formatDuration(secondsUntil(eff[nextKey],tomorrow));
+}
+function tick(){
+  const now=new Date();
+  document.getElementById("clock").textContent=new Intl.DateTimeFormat("en-US",{
+    timeZone:"Asia/Karachi",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true
+  }).format(now);
+  document.getElementById("dateLine").textContent=new Intl.DateTimeFormat("ur-PK",{
+    timeZone:"Asia/Karachi",weekday:"long",day:"numeric",month:"long",year:"numeric"
+  }).format(now);
+  render();
+}
+async function loadTimes(){
+  const status=document.getElementById("status");
+  try{
+    const url=`https://api.aladhan.com/v1/timings/${Math.floor(Date.now()/1000)}?latitude=${SETTINGS.latitude}&longitude=${SETTINGS.longitude}&method=${SETTINGS.calculationMethod}&school=${SETTINGS.school}`;
+    const res=await fetch(url,{cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const json=await res.json();
+    todayData=json.data.timings;
+    localStorage.setItem("furqanPrayerCache",JSON.stringify({date:localDateKey(),timings:todayData}));
+    status.textContent="اوقات خودکار طور پر اپ ڈیٹ ہوگئے ہیں";
+    render();
+  }catch(e){
+    const cached=JSON.parse(localStorage.getItem("furqanPrayerCache")||"null");
+    if(cached?.timings){
+      todayData=cached.timings;
+      status.textContent="انٹرنیٹ دستیاب نہیں — آخری محفوظ اوقات دکھائے جا رہے ہیں";
+      render();
+    }else{
+      status.innerHTML='<span class="error">اوقات لوڈ نہیں ہوسکے۔ انٹرنیٹ کنکشن چیک کریں۔</span>';
+    }
+  }
+}
+loadTimes();
+setInterval(tick,1000);
+setInterval(()=>{ if(localDateKey()!==window._day){window._day=localDateKey();loadTimes();}},60000);
+window._day=localDateKey();
+tick();
+</script>
+</body>
+</html>
