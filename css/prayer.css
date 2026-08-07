@@ -77,15 +77,45 @@
 
 .prayer-col{
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:6px;
+justify-content:flex-start;
 
-    font-weight:600;
+gap:6px;
 
-    white-space:nowrap;
+white-space:nowrap;
+
+font-weight:700;
+
+}
+
+.prayer-col span{
+
+display:inline-block;
+
+}
+
+.prayer-text{
+
+display:inline-block;
+
+color:#1d1d1d;
+
+font-weight:700;
+
+font-size:13px;
+
+}
+
+.prayer-icon{
+
+width:18px;
+
+text-align:center;
+
+flex-shrink:0;
 
 }
 
