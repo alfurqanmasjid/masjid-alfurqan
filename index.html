@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f6ef">
+<title>Masjid Al-Furqan — Malir Cantt</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Al Furqan logo">
+      <div><strong id="brandName">مسجد الفرقان</strong><span id="brandLoc">ملیر کینٹ، کراچی</span></div>
+    </div>
+    <div class="nav-actions">
+      <button id="notifyBtn" class="btn btn-light">🔔 <span data-i18n="alerts">Prayer Alerts</span></button>
+      <button id="langBtn" class="btn btn-dark">EN</button>
+      <a class="btn btn-light" href="admin.html" data-i18n="admin">Admin</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <img class="hero-photo" src="assets/mosque.jpg" alt="Masjid Al-Furqan">
+  <div class="wrap hero-content">
+    <div class="hero-card">
+      <span class="kicker" data-i18n="welcome">Welcome to</span>
+      <h1 id="heroName">مسجد الفرقان</h1>
+      <p id="heroLocation">ملیر کینٹ، کراچی</p>
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="dates"><span id="gregDate">—</span><span id="hijriDate">—</span></div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap main">
+  <section class="next-prayer">
+    <div>
+      <span class="kicker" data-i18n="nextJamaat">Next Jamaat</span>
+      <h2 id="nextName">—</h2>
+      <p id="nextAt">—</p>
+    </div>
+    <div class="countdown" id="countdown">--:--:--</div>
+  </section>
+
+  <div id="alertBanner" class="alert-banner hidden"></div>
+
+  <section class="section">
+    <div class="section-title">
+      <div><span class="kicker" data-i18n="today">Today</span><h2 data-i18n="prayerTimes">Prayer Times</h2></div>
+      <span class="pill">Malir Cantt</span>
+    </div>
+    <div class="prayer-grid" id="prayerGrid"></div>
+    <div class="jummah">
+      <div><strong data-i18n="jummah">Jummah</strong><span data-i18n="jummahSub">Khutbah / Prayer</span></div>
+      <strong id="jummahTime">1:45 PM</strong>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <div><span class="kicker" data-i18n="updates">Latest</span><h2 data-i18n="announcements">Announcements</h2></div>
+    </div>
+    <div class="cards" id="announcements"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <div><span class="kicker" data-i18n="programs">Programs</span><h2 data-i18n="bayanEvents">Bayan & Events</h2></div>
+    </div>
+    <div class="cards" id="events"></div>
+  </section>
+
+  <section class="section two-col">
+    <article class="feature-card">
+      <span class="kicker" data-i18n="ramadan">Ramadan</span>
+      <h3 data-i18n="ramadanTimetable">Ramadan Timetable</h3>
+      <div id="ramadanBox"></div>
+    </article>
+    <article class="feature-card">
+      <span class="kicker" data-i18n="eid">Eid</span>
+      <h3 data-i18n="eidPrayer">Eid Prayer</h3>
+      <div id="eidBox"></div>
+    </article>
+  </section>
+
+  <section class="section two-col">
+    <article class="feature-card">
+      <span class="kicker" data-i18n="janazah">Janazah</span>
+      <h3 data-i18n="janazahNotice">Janazah Notice</h3>
+      <div id="janazahBox"></div>
+    </article>
+    <article class="feature-card">
+      <span class="kicker" data-i18n="nikah">Nikah</span>
+      <h3 data-i18n="nikahInfo">Nikah Information</h3>
+      <div id="nikahBox"></div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <div><span class="kicker" data-i18n="duas">Duas</span><h2 data-i18n="commonDuas">Common Duas</h2></div>
+    </div>
+    <div class="dua-grid" id="duasGrid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <div><span class="kicker" data-i18n="gallery">Gallery</span><h2 data-i18n="masjidGallery">Masjid Gallery</h2></div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section class="section two-col">
+    <article class="feature-card">
+      <span class="kicker" data-i18n="donate">Donate</span>
+      <h3 data-i18n="donationDetails">Donation Details</h3>
+      <div id="donationBox"></div>
+    </article>
+    <article class="feature-card">
+      <span class="kicker" data-i18n="location">Location</span>
+      <h3 data-i18n="findUs">Find Us</h3>
+      <iframe id="mapFrame" class="map" loading="lazy"></iframe>
+      <a id="directionsBtn" class="btn btn-dark full" target="_blank" data-i18n="directions">Get Directions</a>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-title">
+      <div><span class="kicker" data-i18n="people">People</span><h2 data-i18n="imamCommittee">Imam & Committee</h2></div>
+    </div>
+    <div class="cards" id="committee"></div>
+  </section>
+
+  <section class="section contact">
+    <div>
+      <span class="kicker" data-i18n="contact">Contact</span>
+      <h2 data-i18n="contactMasjid">Contact Masjid Al-Furqan</h2>
+    </div>
+    <div id="contactLinks" class="contact-links"></div>
+  </section>
+</main>
+
+<footer><div class="wrap footer-inner"><span>Masjid Al-Furqan • Malir Cantt, Karachi</span><a href="tv.html">TV Mode</a></div></footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
