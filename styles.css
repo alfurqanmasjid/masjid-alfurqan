@@ -33,3 +33,11 @@ footer{border-top:1px solid var(--line);background:white}.footer-inner{min-heigh
 .hero-card .clock{margin-top:2px}
 .next-prayer .kicker{font-size:16px}
 @media(max-width:620px){.hero{height:500px}.hero-content{align-items:center}.hero-card{padding:18px 0}.hero-card .kalma{font-size:30px!important;line-height:1.6}.hero-card h1{font-size:44px}.hero-location{font-size:18px!important}.hero-card .dates{font-size:13px;gap:10px}.clock{font-size:48px}.next-prayer .kicker{font-size:16px}}
+
+/* v3.3 requested finishing touches */
+.pk-flag{width:27px;height:18px;display:inline-block;vertical-align:middle;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.18);flex:0 0 auto}
+.brand div{display:flex;flex-direction:column}.brand #brandLoc{display:inline-block}.brand .pk-flag{margin-inline-start:5px}
+.hero-location-line{display:flex;align-items:center;gap:9px;margin:0 0 10px}.hero-location-line .hero-location{margin:0!important}.hero-flag{width:34px;height:23px}
+.hero-card .dates{display:inline-flex;width:auto;background:rgba(12,38,29,.58);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:7px 11px;backdrop-filter:blur(3px);text-shadow:0 1px 5px rgba(0,0,0,.65)}
+.footer-flag{width:24px;height:16px;margin-inline-start:5px}
+@media(max-width:620px){.hero-card .dates{padding:6px 9px;background:rgba(12,38,29,.64)}.hero-flag{width:29px;height:19px}.brand .pk-flag{display:none}}
