@@ -41,3 +41,9 @@ footer{border-top:1px solid var(--line);background:white}.footer-inner{min-heigh
 .hero-card .dates{display:inline-flex;width:auto;background:rgba(12,38,29,.58);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:7px 11px;backdrop-filter:blur(3px);text-shadow:0 1px 5px rgba(0,0,0,.65)}
 .footer-flag{width:24px;height:16px;margin-inline-start:5px}
 @media(max-width:620px){.hero-card .dates{padding:6px 9px;background:rgba(12,38,29,.64)}.hero-flag{width:29px;height:19px}.brand .pk-flag{display:none}}
+
+/* v3.4 resources page */
+.resources-banner{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(135deg,#fff,#eef4ef);border:1px solid var(--line);border-radius:20px;padding:22px 24px;box-shadow:0 10px 28px rgba(34,65,52,.06)}
+.resources-banner h2{margin:3px 0 5px;font-size:27px}.resources-banner p{margin:0;color:var(--muted);line-height:1.7}.resources-arrow{font-family:system-ui,sans-serif;font-size:34px;color:var(--green);font-weight:800}
+.resources-main{padding:34px 0 58px}.resources-intro{background:linear-gradient(135deg,#fff,#eef4ef);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}.resources-intro h1{font-size:clamp(36px,6vw,58px);margin:4px 0 8px}.resources-intro p{color:var(--muted);font-size:17px;line-height:1.9;margin:0}.janazah-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.janazah-card .dua-ar{font-size:22px;line-height:2.15}.dua-note{background:var(--soft);border-radius:10px;padding:10px 12px;color:var(--green);font-size:13px;line-height:1.8;margin:12px 0 0}.ramadan-help{color:var(--muted);margin:-5px 0 8px}
+@media(max-width:760px){.janazah-grid{grid-template-columns:1fr}.resources-banner{padding:18px}.resources-banner h2{font-size:23px}.resources-banner p{font-size:14px}.resources-arrow{font-size:28px}.resources-intro{padding:22px}.janazah-card .dua-ar{font-size:20px}}

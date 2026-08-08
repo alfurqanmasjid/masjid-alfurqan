@@ -1,11 +1,10 @@
-# Masjid Al-Furqan Website — Version 3.3
+# Masjid Al-Furqan v3.4
+Lightweight GitHub Pages website for Jamia Masjid Al-Furqan, Malir Cantt.
 
-Simple one-page website for Jamia Masjid Al-Furqan, Malir Cantt.
+## v3.4
+- Keeps the v3.3 homepage and moves Duas/Ramadan off the homepage.
+- Adds `duas.html` for Masnoon duas, Janazah duas and Ramadan calendar.
+- Ramadan Sehri/Fajr and Iftar/Maghrib data is fetched from AlAdhan for the configured Masjid coordinates.
+- Homepage Jamaat timings remain the Masjid's configured Jamaat times, not AlAdhan prayer times.
 
-- Masjid Jamaat times are the committee/poster times (not AlAdhan Adhan times).
-- AlAdhan is used in the background for Hijri date and Ramadan Sehri/Iftar calendar.
-- Ramadan Gregorian dates are shown with readable month names.
-- Hero order: First Kalma, Masjid name, location, dates, live clock.
-
-
-V3.3: improved date readability, SVG Pakistan flag, readable Ramadan month names, and Ramadan calendar moved to the bottom.
+Open `index.html` for the main site. `admin.html` remains reserved for the next admin-control stage.
