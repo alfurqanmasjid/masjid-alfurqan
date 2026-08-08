@@ -1,1 +1,0 @@
-window.MASJID_APP={settings:{mosqueNameEn:"Masjid Al-Furqan",mosqueNameUr:"مسجد الفرقان",locationEn:"Malir Cantt, Karachi",locationUr:"ملیر کینٹ، کراچی",latitude:24.929231,longitude:67.2063425,timezone:"Asia/Karachi",calculationMethod:1,school:1,showPrayerSection:true,jamaat:{Fajr:"05:30",Ishraq:"",Chasht:"",Dhuhr:"13:30",Asr:"17:45",Maghrib:"",Isha:"21:00",Jummah:"13:45"}}};

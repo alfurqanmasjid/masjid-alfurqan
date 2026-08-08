@@ -1,1 +1,0 @@
-/* Prayer alert banner will be added after prayer-section approval. */
