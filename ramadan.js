@@ -1,8 +1,7 @@
 const DATA=window.MASJID_CONFIG.defaults,$=id=>document.getElementById(id);
 function clean(v){return String(v||"").split(" ")[0].slice(0,5)}
 function show(hm){if(!hm)return"—";let[h,m]=hm.split(":").map(Number),a=h>=12?"PM":"AM";h=h%12||12;return `${h}:${String(m).padStart(2,"0")} ${a}`}
-function renderDuas(){const g=$("duasGrid");DATA.duas.forEach(d=>{const c=document.createElement("article");c.className="dua-card";c.innerHTML=`<h3>${d.titleUr}</h3><div class="dua-ar" dir="rtl">${d.arabic}</div><div class="dua-trans">${d.transUr}</div>`;g.appendChild(c)})}
 function formatGregorian(g){const mon=(g.month&&g.month.en)?g.month.en.slice(0,3):"";return `${parseInt(g.day,10)} ${mon} ${g.year}`}
 async function load(){try{let u=`https://api.aladhan.com/v1/timings/${Math.floor(Date.now()/1000)}?latitude=${DATA.latitude}&longitude=${DATA.longitude}&method=${DATA.calculationMethod}&school=${DATA.school}`,r=await fetch(u,{cache:"no-store"}),j=await r.json(),year=j.data.date.hijri.year;await loadRamadan(year)}catch(e){$("ramadanStatus").textContent="رمضان کیلنڈر فی الحال دستیاب نہیں۔"}}
 async function loadRamadan(year){try{let u=`https://api.aladhan.com/v1/hijriCalendar/${year}/9?latitude=${DATA.latitude}&longitude=${DATA.longitude}&method=${DATA.calculationMethod}&school=${DATA.school}`,r=await fetch(u,{cache:"no-store"}),j=await r.json();if(!j.data||!Array.isArray(j.data))throw Error();const body=$("ramadanRows");body.innerHTML="";j.data.forEach(d=>{const tr=document.createElement("tr");tr.innerHTML=`<td>${d.date.hijri.day}</td><td>${formatGregorian(d.date.gregorian)}</td><td>${show(clean(d.timings.Fajr))}</td><td>${show(clean(d.timings.Maghrib))}</td>`;body.appendChild(tr)});$("ramadanStatus").textContent=`رمضان ${year}ھ • ملیر کینٹ`}catch(e){$("ramadanStatus").textContent="رمضان کیلنڈر فی الحال دستیاب نہیں۔"}}
-renderDuas();load();
+load();

@@ -8,3 +8,8 @@ Lightweight GitHub Pages website for Jamia Masjid Al-Furqan, Malir Cantt.
 - Homepage Jamaat timings remain the Masjid's configured Jamaat times, not AlAdhan prayer times.
 
 Open `index.html` for the main site. `admin.html` remains reserved for the next admin-control stage.
+
+## Version 3.5
+- Expanded dedicated Duas page with Durood-e-Ibrahimi, post-Salah adhkar, Quranic/masjid duas, and Janazah duas for adult male/female and minor boy/girl.
+- Small source/reference line is shown with every dua.
+- Ramadan calendar moved to its own ramadan.html page; API logic moved to ramadan.js.
