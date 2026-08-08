@@ -1,13 +1,8 @@
-# Masjid Al-Furqan v3.1
-Lightweight one-page website for Jamia Masjid Al-Furqan, Malir Cantt, Karachi.
+# Masjid Al-Furqan Website — Version 3.2
 
-- Daily prayer timings: AlAdhan API using fixed mosque coordinates
-- Ramadan calendar: AlAdhan Hijri calendar API
-- Jummah: fixed in config.js (13:45)
-- Madrasa / At-Tibyan information
-- Donation details
-- Duas
-- Google Maps location
-- Urdu / English switch
+Simple one-page website for Jamia Masjid Al-Furqan, Malir Cantt.
 
-Upload all files and the assets folder to the root of the GitHub Pages repository.
+- Masjid Jamaat times are the committee/poster times (not AlAdhan Adhan times).
+- AlAdhan is used in the background for Hijri date and Ramadan Sehri/Iftar calendar.
+- Ramadan Gregorian dates are shown with readable month names.
+- Hero order: First Kalma, Masjid name, location, dates, live clock.
