@@ -1,0 +1,12 @@
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+const cfg={apiKey:"AIzaSyAG3FCrtzDB8hU5YwvsvegG94ZeIw3HozQ",authDomain:"masjid-al-furqan-2026.firebaseapp.com",projectId:"masjid-al-furqan-2026",storageBucket:"masjid-al-furqan-2026.firebasestorage.app",messagingSenderId:"176201871976",appId:"1:176201871976:web:e38c8d50f69d5fca0b81dd"};
+const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app),ref=doc(db,"masjid","settings"),D=window.MASJID_CONFIG.defaults;
+const $=id=>document.getElementById(id),form=$("settingsForm");
+function fill(data={}){const j={...D.jamaat,...(data.jamaat||{})},e={...D.editable,...(data.editable||{})}; for(const k of Object.keys(j)) form.elements[k].value=j[k]; form.elements.jummah.value=data.jummah||D.jummah; for(const k of Object.keys(e)) if(form.elements[k])form.elements[k].value=e[k]||"";}
+async function load(){const s=await getDoc(ref);fill(s.exists()?s.data():{});}
+$("loginBtn").onclick=async()=>{try{$("loginStatus").textContent="Signing in…";await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);$("password").value=""}catch(e){$("loginStatus").textContent="Login failed. Check email/password."}};
+$("logoutBtn").onclick=()=>signOut(auth);
+onAuthStateChanged(auth,async u=>{if(u){$("loginBox").classList.add("hide");$("userBox").classList.remove("hide");form.classList.remove("hide");$("userEmail").textContent=u.email;$("loginStatus").textContent="";await load()}else{$("loginBox").classList.remove("hide");$("userBox").classList.add("hide");form.classList.add("hide")}});
+form.onsubmit=async e=>{e.preventDefault();const fd=new FormData(form),jamaat={};["Fajr","Dhuhr","Asr","Maghrib","Isha"].forEach(k=>jamaat[k]=fd.get(k).trim());const editable={};Object.keys(D.editable).forEach(k=>editable[k]=(fd.get(k)||"").trim());try{$("saveStatus").textContent="Saving…";await setDoc(ref,{jamaat,jummah:fd.get("jummah").trim(),editable,updatedAt:new Date().toISOString()},{merge:true});$("saveStatus").textContent="Saved ✓";setTimeout(()=>$("saveStatus").textContent="",3000)}catch(err){$("saveStatus").textContent="Could not save. Please try again."}};

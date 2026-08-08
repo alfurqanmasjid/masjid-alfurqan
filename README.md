@@ -1,15 +1,7 @@
-# Masjid Al-Furqan v3.4
-Lightweight GitHub Pages website for Jamia Masjid Al-Furqan, Malir Cantt.
+# Masjid Al-Furqan — Version 3.6
+Public site based on V3.5 with Firebase-powered admin controls.
 
-## v3.4
-- Keeps the v3.3 homepage and moves Duas/Ramadan off the homepage.
-- Adds `duas.html` for Masnoon duas, Janazah duas and Ramadan calendar.
-- Ramadan Sehri/Fajr and Iftar/Maghrib data is fetched from AlAdhan for the configured Masjid coordinates.
-- Homepage Jamaat timings remain the Masjid's configured Jamaat times, not AlAdhan prayer times.
+Admin controls: Jamaat + Jummah timings, Bayan/Dars text, Madrasa information, Donation details.
+Duas and Ramadan pages remain fixed.
 
-Open `index.html` for the main site. `admin.html` remains reserved for the next admin-control stage.
-
-## Version 3.5
-- Expanded dedicated Duas page with Durood-e-Ibrahimi, post-Salah adhkar, Quranic/masjid duas, and Janazah duas for adult male/female and minor boy/girl.
-- Small source/reference line is shown with every dua.
-- Ramadan calendar moved to its own ramadan.html page; API logic moved to ramadan.js.
+Firebase: Authentication (Email/Password) + Cloud Firestore `masjid/settings`.
