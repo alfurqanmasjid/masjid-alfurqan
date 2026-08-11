@@ -5,7 +5,7 @@ try{
  const db=getFirestore(initializeApp(firebaseConfig)); const snap=await getDoc(doc(db,"masjid","settings"));
  if(snap.exists()){
   const x=snap.data(), d=window.MASJID_CONFIG.defaults;
-  if(x.jamaat) d.jamaat={...d.jamaat,...x.jamaat}; if(x.prayerMode) d.prayerMode={...d.prayerMode,...x.prayerMode}; if(x.jummah) d.jummah=x.jummah;
+  if(x.jamaat) d.jamaat={...d.jamaat,...x.jamaat}; if(x.prayerMode) d.prayerMode={...d.prayerMode,...x.prayerMode}; if(Number.isInteger(x.hijriAdjustment)) d.hijriAdjustment=x.hijriAdjustment; if(x.jummah) d.jummah=x.jummah;
   d.editable={...d.editable,...(x.editable||{})};
   window.dispatchEvent(new Event("masjid-data-updated"));
  }
