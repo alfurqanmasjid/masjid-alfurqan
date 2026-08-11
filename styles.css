@@ -50,3 +50,13 @@ footer{border-top:1px solid var(--line);background:white}.footer-inner{min-heigh
 /* v3.5 expanded duas + separate Ramadan page */
 .durood-feature{border:1px solid #d8c58f;background:linear-gradient(135deg,#fffdf7,#f4f7f1);padding:26px}.durood-feature h2{font-size:32px;margin:4px 0 12px}.durood-feature .dua-ar{font-size:27px;line-height:2.2}.dua-source{margin-top:12px;padding-top:9px;border-top:1px dashed var(--line);font-family:"Segoe UI",Arial,sans-serif;font-size:11px;line-height:1.6;color:#77837d;direction:rtl}.section-help{color:var(--muted);line-height:1.9;margin:-5px 0 14px}.wide-dua{grid-column:1/-1}.resource-links{display:grid;grid-template-columns:2fr 1fr;gap:12px}.compact-resource{background:linear-gradient(135deg,#fffaf0,#f3eee1)}
 @media(max-width:760px){.resource-links{grid-template-columns:1fr}.durood-feature{padding:20px}.durood-feature h2{font-size:27px}.durood-feature .dua-ar{font-size:22px}.dua-source{font-size:10.5px}.wide-dua{grid-column:auto}}
+
+
+/* PWA install prompt */
+.pwa-install-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#f8f6ef;border-top:1px solid rgba(1,65,28,.18);box-shadow:0 -8px 24px rgba(0,0,0,.12)}
+.pwa-install-inner{display:flex;align-items:center;gap:14px;padding:12px 16px}
+.pwa-install-inner>div{display:flex;flex-direction:column;flex:1}
+.pwa-install-inner strong{font-size:16px}
+.pwa-install-inner span{font-size:13px;opacity:.78}
+.pwa-install-close{border:0;background:transparent;font-size:26px;line-height:1;cursor:pointer;padding:4px 8px}
+@media(max-width:640px){.pwa-install-inner{gap:9px}.pwa-install-inner span{font-size:12px}.pwa-install-inner .btn{white-space:nowrap;padding:9px 11px}}
